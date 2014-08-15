@@ -1,0 +1,163 @@
+@import 'bourbon'
+
+/* 
+ *  Document   : poemreader
+ *  Created on : Mar 19, 2014, 3:42:04 PM
+ *  Author     : Cat
+ *  Description:
+ *      Format the poem reader interface
+
+@import 'menus'
+@import 'onboarding'
+@import 'poeminput'
+
+$lyrics-scollbar-width: 60px
+
+body
+  background-color: rgb(255, 253, 249)
+  color: rgb(25, 9, 1)
+  font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif
+  background: no-repeat url('../img/background2.png') bottom right
+  background-size: contain 
+
+html, body
+  position: absolute
+  overflow: hidden
+  -webkit-font-smoothing: antialiased
+
+html, body, article .main-container
+  width: 100%
+  height: 100%
+
+//Navbar
+#navbar-top
+  border: none
+  @media screen and (max-width: 1024px)
+    display: none
+
+.navbar-brand
+  background: transparent
+  border: none
+
+.header-poem-title
+  padding-left: 0px
+
+#btn-question, .btn-question
+  float: right
+  background: transparent
+
+//Start page
+.list-group-item
+  background: white
+  @include transition (all 0.3s ease-in-out)
+
+  &:hover
+    background: rgba(0,0,0,0.1)
+    @include transition (all 0.3s ease-in-out)
+
+.welcome
+  @include transition (all 1s slide-in-out)
+
+#jumbotron-about-box
+  background-color: transparent
+
+#about-box
+  display: none
+  @include transition (all 0.3s ease-in-out)
+  
+//Poem reader
+.poem-pane
+  height: 100%
+  overflow: hidden
+  div
+    /*height:100%;
+
+p
+  @include transition (all 0.3s ease-in-out)
+  font-size: 1.5em  
+
+  &.line
+    margin: 0
+    padding: 2px
+    font-size: 1.5em
+    color: rgba(0,0,0,0.6)
+  &.highlight
+    /*background-color: rgba(255,234,0,.3);
+    color: rgb(39, 17, 194)
+    @include transition (all 0.3s ease-in-out)
+
+#visualization-controls
+  width: 100%
+  @include transition (all 0.3s ease-in-out)
+
+.invisible
+  opacity: 0
+  @include transition (all 0.3s ease-in-out)
+
+#poem-pane-pane
+  padding: 0px, 0, 0, 20px
+  height: 100vh
+  overflow: hidden
+
+#poem-lyrics-pane
+  margin-top: 70px
+  height: 70vh
+  font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif
+  @include transition (all 0.3s ease-in-out)
+
+
+
+.poem-lyrics-pane-label
+  padding: (0px $lyrics-scollbar-width 0px 0px)
+
+.poem-lyrics-pane-lyrics
+  overflow-y: scroll
+  height: 70vh
+
+.lyrics-pane-label
+  color: rgba(0, 0, 0, 0.7)
+
+.lyrics-pane-padding
+  height: 30vh
+
+.middle
+  & div.poem-lyrics-pane-lyrics
+    &::-webkit-scrollbar
+      width: 0px
+
+.space
+  margin: 0px
+  height: 25px
+
+.poem-lyrics-pane-lyrics
+  &::-webkit-scrollbar
+    width: $lyrics-scollbar-width
+
+.line-number, .line-number-blank
+  padding-top: 3px
+  text-align: left
+  color: rgba(0,0,0,.4)
+  position: absolute
+  min-width: 10px
+  font-size: 0.7em
+  display: inline-block
+
+.line-number-blank
+  color: rgba(0,0,0,0)
+
+.line-content
+  display: inline-block
+  padding-left: 25px
+
+.audio-controller
+  & .btn
+    background-color: transparent
+    color: black
+
+#audio-time-holder
+  opacity: 0.5
+  @include transition (all 0.3s ease-in-out)
+
+  &:hover
+    opacity: 1
+    @include transition (all 0.3s ease-in-out)

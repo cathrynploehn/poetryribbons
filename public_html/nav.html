@@ -1,0 +1,27 @@
+           <!-- Fixed navbar -->
+            <div class="navbar navbar-default navbar-fixed-top" id="navbar-top" role="navigation">
+              <div class="container-fluid">
+                  <div class="col-md-3 ">
+                      <a href="." class="navbar-brand">Poetry Ribbons</a>
+                  </div>
+                  <div class="<?php if(!isset($poem_text)){ echo 'col-md-6 col-md-offset-2';} else { echo 'col-sm-6';} ?>">
+                      <hgroup>
+                          <ul class="nav navbar-nav" style="text-align:right;">
+                            <li class="header-poem-title navbar-brand"><?php if(isset($poemtitle)){ echo $poemtitle; } ?></li>
+                            <li class="header-poem-author navbar-brand"><small><?php if(isset($first_name) || isset($last_name)){ echo ' by <span id="first_name">'.$first_name.'</span><span id="last_name">  '.$last_name.'</span>'; }?></small></li>
+                          </ul>
+                      </hgroup>
+                  </div>
+                  
+                    <button type="button" id="btn-question" class="btn btn-lg">
+                      <span class="glyphicon glyphicon-question-sign"></span>
+                    </button>
+                    
+                <div class="navbar-collapse collapse">
+                  <!--ul class="nav navbar-nav navbar-right">
+                    <li class="header-poem-name navbar-brand">Juventud</li>
+                    <li class="aheader-poem-author navbar-brand">Pablo Neruda</li>
+                  </ul>-->
+                </div><!--/.nav-collapse -->
+              </div>
+            </div>

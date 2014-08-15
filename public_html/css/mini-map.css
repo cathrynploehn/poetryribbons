@@ -1,0 +1,68 @@
+#mini-map-container{
+	position: fixed;
+	z-index: 21;
+	top: 20px;
+	width: 36px;
+	opacity: 1;
+	-webkit-transition: opacity 1s ease;
+	   -moz-transition: opacity 1s ease;
+		 -o-transition: opacity 1s ease;
+			transition: opacity 1s ease;
+}
+#mini-map {
+		position: absolute;
+		top: 50px;
+		width: 30px;
+
+}
+	#mini-map.out-of-view {
+		opacity: 0;
+	}
+	#mini-map #current-view {
+		border: 2px solid rgba(39, 17, 194, 0.15);
+		width: 34px;
+		background: none;
+		border-radius: 6px;
+		margin: 0px 0 0 -2px;
+		z-index: 22;
+		position: absolute;
+	}
+	#mini-map div {
+		position: absolute;
+		background: #EAEAEA;
+		width: 100%;
+	}
+		#mini-map div.h1 {
+			background: #666;
+		}
+		#mini-map div.h2 {
+			background: #999;
+		}
+		#mini-map div.h3 {
+			background: #CCC;
+		}
+		#mini-map div.p {
+			background: rgba(0,0,0,0.1);
+		}
+		#mini-map div.ul {
+			background: #FCC;
+		}
+		#mini-map div.ol {
+			background: #F60;
+		}
+		#mini-map div.figure {
+			background: #F4F4F4;
+		}
+		#mini-map div.pre {
+			background: #0Cf;
+		}
+	#mini-map .lyrics-pane-padding {
+		opacity: 0;
+	}
+	#mini-map .space {
+		opacity: 0;
+	}
+	#mini-map div.highlight {
+		background-color: blue;
+		opacity: 0.3
+	}

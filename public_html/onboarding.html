@@ -1,0 +1,73 @@
+<div id="onboarding-container" >
+              <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="labels-container">
+                            <div id="onboarding-go-back" class="onboarding-help-label">
+                                <div id="holder">
+                                    <div class="dot"></div>
+                                    <div class="pulse"></div>
+                                </div><img src="img/onboarding-02.svg"/></div>
+                            <div id="onboarding-viz-menu" class="onboarding-help-label">
+                                <div id="holder">
+                                    <div class="dot"></div>
+                                    <div class="pulse"></div>
+                                </div><img src="img/onboarding-03.svg"/></div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                         <div class="row">
+                             <div class="col-sm-12">
+                                <div id="onboarding-poem-info-box" class="onboarding-info-box">
+                                    <button type="button" class="btn btn-lg btn-question">
+                                      <span class="glyphicon glyphicon-question-sign"></span>
+                                    </button>
+                                    <?php
+                                    if(isset($poem_title)){
+                                        echo '<h3>'.$poem_title.'<small>, by '.$author_name.'</small></h3>';
+                                        
+                                    } else {
+                                        echo '<h3>Poema XX<small>, by Pablo Neruda</small></h3>
+                                        <h4>Published in <em>Twenty Love Poems and a Song of Despair</em> (1924)</h4>
+                                        <hr>
+                                        <p>Twenty Love Poems and a Song of Despair (Spanish: Veinte poemas de amor y una canción desesperada) is a collection of romantic poems by the Chilean poet Pablo Neruda, first published in 1924 when Neruda was 19. It was Neruda\'s second published work, and made his name as a poet.</p>
+                                        <p>Veinte poemas was controversial for its eroticism, especially considering its author\'s very young age. Over the decades, Veinte poemas has become Neruda\'s best-known work, and has sold more than a million copies. [1] The book has been translated into many languages; in English, the translation was made by poet W. S. Merwin. 
+                                            <small><a href="http://en.wikipedia.org/wiki/Twenty_Love_Poems_and_a_Song_of_Despair">(Wikipedia)</a></small></p>';
+                                        }
+                                     ?>
+                                </div>
+                                 <div class="onboarding-info-box" id="onboarding-begin-container">
+                                     <form method="link" action="." class="onboarding-go-back-form">
+                                          <button type="submit" class="btn btn-lg">
+                                            <div class="glyphicon glyphicon-arrow-left"></div><div>Go back</div>
+                                         </button>
+                                     </form>
+                                    
+                                     <button type="button" id="btn-begin-reading" class="btn btn-lg btn-begin-reading-loading">
+                                        <div class="spinner-label">loading</div>
+                                     </button>
+                                 </div>
+                             </div>
+                             <div id="onboarding-audio-controls" class="onboarding-help-label">
+                                 <img src="img/onboarding-04.svg"/>
+                                 <div id="holder">
+                                    <div class="dot"></div>
+                                    <div class="pulse"></div>
+                                </div></div>                             
+                         </div> 
+                         <div class="row">
+                              <div class="col-sm-6">
+                              </div>
+                              <div class="col-sm-6">
+                              </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-6" >
+                            </div>
+                            <div class="col-sm-6" >
+                            </div>
+                         </div>
+                    </div>
+                  </div>
+              </div>
+          </div>

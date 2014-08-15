@@ -1,0 +1,45 @@
+<?php include('head.html'); ?>
+	<body style="overflow-y:scroll;">
+<?php include('nav.html'); ?>
+            <div class="row" style="margin-top:70px;">
+                <div class="col-md-4 col-md-offset-4">
+                <h1>Upload your poem into Poetry Ribbons!</h1>
+                <form role="form" method="post" action="poemsubmit.php" >
+                	<div class="form-group">
+                		<label>Author Name</label>
+                		<input class="form-inline form-control" type="text" name="firstname" placeholder="First name"><br>
+						<input class="form-inline form-control" type="text" name="lastname" placeholder="Last name"><br>
+						<label>
+					      <input name="anonymous" value="anonymous" type="checkbox"> Be anonymous
+					    </label>
+                	</div>
+                	<div class="form-group">
+						<label>Poem Title:</label>
+	                	<input class="form-control" type="text" name="poemtitle" placeholder="My Awesome Poem"><br>
+	                	<label>Poem text:</label>
+	                	<textarea class="form-control" rows="20" placeholder="" required>
+Roses are red
+Violets are blue
+Poems are cool
+and so are you!
+	                	</textarea><br>
+                	</div>
+                	
+					
+					<div class="form-group">
+					    <label for="audioInputFile">Narration Audio File</label>
+					    <input type="file" name="audioInputFile" id="audioInputFile" accept="audio/*">
+					    <p class="help-block">4MB Max upload size</p>
+					</div>
+					<div class="form-group">
+					    <button type="submit" name="input" value="input" class="btn btn-default">
+                          Next >
+                        </button>
+					</div>
+
+                </form>
+                	
+               	</div>
+            </div>
+    </body>
+</html>

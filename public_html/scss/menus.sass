@@ -1,0 +1,76 @@
+@import 'bourbon'
+
+article.flip-main-container
+  width: 100%
+  height: 100%
+  position: relative
+  @include transform-style(preserve-3d)
+
+.flip-container, .open-menu-btn
+  position: absolute
+
+.open-menu-btn
+  left: 0px
+  height: 100vh
+  width: 50px
+  z-index: 3
+  font-size: 4em
+  text-align: center
+  vertical-align: middle
+  color: rgba(0,0,0,0)
+  background-color: transparent
+  @include transition (all 0.2s ease-in-out)
+
+  & p
+    display: inline-block
+    position: relative
+    width: 100%
+    top: 50%
+    transform: translateY(-50%)
+    vertical-align: middle
+    @include transition (all 0.4s ease-in-out)    
+
+  &:hover
+    z-index: -3
+    @include transition (all 0.4s ease-in-out)
+
+.left-menu-inactive
+  left: -50px
+  @include transition (all 0.0s ease-in-out)
+
+.left-menu-active
+  left: -7px
+  @include transition (all 0.0s ease-in-out)    
+
+.rotate-main-left
+  @include transform (translateX(210px))
+  @include transition (all .3s ease-in-out)
+
+.rotate-main-center
+  @include transition (all .3s ease-in-out)
+
+#left-menu 
+  background-color: #ddd
+  display: block
+  width: 220px
+  height: 100vh
+  @include transition (all 0.4s ease-in-out)
+  z-index: -1  
+
+  ul
+    margin-top: 90px
+
+  button
+    width: 100%
+    background-color: white
+  
+  & .hide-visual
+    display: inline-block 
+    vertical-align: middle
+    padding: 2px
+
+#poem-main-container
+  background-color: white
+  -webkit-box-shadow: 0px 0px 109px 11px rgba(0,0,0,0.2)
+  -moz-box-shadow: 0px 0px 109px 11px rgba(0,0,0,0.2)
+  box-shadow: 0px 0px 109px 11px rgba(0,0,0,0.2)

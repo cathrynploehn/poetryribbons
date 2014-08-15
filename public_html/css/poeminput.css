@@ -1,0 +1,30 @@
+/*  Document   : poemreader
+ *  Created on : Mar 19, 2014, 3:42:04 PM
+ *  Author     : Cat
+ *  Description:
+ *      Format the poem reader interface */
+textarea {
+  width: 100%;
+}
+
+.check-area {
+  padding-left: 10px;
+}
+
+label.btn.reviewToggle {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+label.btn.reviewToggle.active {
+  background-color: gray;
+  color: white;
+}
+
+.review-btn-group {
+  float: right;
+  padding-right: 10px;
+}
+
+.trigger-parent-pane {
+  display: none;
+}

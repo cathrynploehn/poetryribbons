@@ -1,0 +1,57 @@
+<?php include('head.html'); ?>
+	<body style="overflow-y:scroll;">
+<?php include('nav.html'); ?>
+            <div class="row" style="margin-top:70px;">
+            <div class="col-md-4 col-md-offset-4">
+            	<h1>Upload your poem into Poetry Ribbons</h1>
+			</div>
+                <div class="col-md-4 col-md-offset-4 panel panel-default">
+                	<div class="panel-body">
+		                <p></p>
+		                <?php if(isset($is_err)){echo '<div class="alert alert-danger">Error</div>';}?>
+		                <form role="form" method="post" action="poemsubmit.php" enctype="multipart/form-data">
+		                	<div class="form-group  <?php if(isset($firstname_err) || isset($lastname_err)){echo "has-error";}?>">
+		                		<label>Author Name</label>
+		                		<?php if(isset($firstname_err) || isset($lastname_err)){echo '<div class="alert alert-danger">Enter a first name or check anonymous</div>';}?>
+		                		<input class="form-inline form-control" type="text" name="firstname" placeholder="First name"><br>
+								<input class="form-inline form-control" type="text" name="lastname" placeholder="Last name"><br>
+								<label>
+							      <input id="anonymous" name="anonymous" value="anonymous" type="checkbox"> Be anonymous
+							    </label>
+		                	</div>
+		                	<div class="form-group <?php if(isset($poemtitle_err)){echo 'has-error';}?>">
+		                		<?php if(isset($poemtitle_err)){echo '<div class="alert alert-danger">Enter a poem title</div>';}?>
+								<label>Poem Title:</label>
+			                	<input class="form-control" type="text" name="poemtitle" placeholder="My Awesome Poem"><br>
+			                </div>	
+			                <div class="form-group <?php if(isset($poemtext_err)){echo 'has-error';}?>">
+			                	<?php if(isset($poemtext_err)){echo '<div class="alert alert-danger">Enter a poem.</div>';}?>
+			                	<label>Poem text:</label>
+			                	<textarea id="originalText" name="originalText" class="form-control" rows="20" placeholder="" required>
+Roses are red
+Violets are blue
+Poems are cool
+and so are you!</textarea><br>
+								<label>Translated Poem text (optional):</label>
+								<textarea id="translatedText" name="translatedText" class="form-control" rows="20" placeholder=""></textarea><br>
+		                	</div>
+		                	
+							
+							<div class="form-group <?php if(isset($audio_err)){echo 'has-error';}?>">
+							    <label class="" for="audioInputFile">Narration Audio File</label>
+							    <?php if(isset($audio_err)){echo '<div class="alert alert-danger">Upload an audio file under 1MB</div>';}?>
+							    <input type="file" name="audioInputFile" id="audioInputFile" accept="audio/*">
+							    <p class="help-block">4MB Max upload size</p>
+							</div>
+							<div class="form-group">
+							    <button type="submit" name="input" value="input" class="btn btn-default">
+		                          Next >
+		                        </button>
+							</div>
+							<input type="hidden" name="submitted" id="submitted" value="true" />
+		                </form>
+                	</div>
+               	</div>
+            </div>
+    </body>
+</html>

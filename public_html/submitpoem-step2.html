@@ -1,0 +1,133 @@
+<!--
+
+-->
+<?php include('head.html'); ?>
+<?php include('onboarding-submitpoem.html'); ?>
+<?php include('onboarding-savepoem.html'); ?>
+         <article class="flip-main-container poemsubmit" id="<?php echo $poem_name; ?>">
+          
+          <div class="open-menu-btn" id="open-menu-btn-left"><p>▶</p></div>
+          <div id="left-menu" class="flip-container menu left-menu-inactive container-fluid">
+              <div>
+                  <div class="col-md-12">
+                      <h2>Visual Controls</h2>
+                      <button type="button" id="btn-hide-viz" class="btn btn-lg hideViz">
+                        <div class="glyphicon glyphicon-remove hide-visual"></div><div class="hide-visual" id="hide-visual-text"><small>hide visual</small></div>
+                      </button>
+                  </div>
+                
+              </div>
+          </div>
+          <div class="container-fluid main-container flip-container" id="poem-main-container">
+          <body>
+              <?php include('nav.html'); ?>
+              <div class="row poem-pane">
+                  <div class="col-md-5"  id="poem-pane-pane">
+                      <canvas id="visualization-canvas"></canvas>
+                  </div>
+                  <div class="col-md-7"  id="poem-lyrics-pane">
+                        <div class="row poem-lyrics-pane-label">
+                            <div class="<?php if(!isset($poem_translatedText)){ echo 'col-md-6 col-md-offset-3';} else { echo 'col-sm-6';} ?>" >
+                                <section class="lyrics-pane-label"><h4>Original Text</h4></section>
+                            </div>
+                            <?php if(isset($poem_translatedText)){echo '<div class="col-sm-6" style="">
+                                <section class="lyrics-pane-label"><h4>Translated Text</h4></section>
+                            </div>';}?>
+                        </div>
+                        <div class="row poem-lyrics-pane-lyrics">
+                          <div class="<?php if(!isset($poem_translatedText)){ echo 'col-md-6 col-md-offset-3';} else { echo 'col-sm-6';} ?>" 
+                            <section id="originalLyrics-pane" class="lyrics-pane">
+                              <?php 
+
+                                $line = 1;
+                                $stanza = 1;
+
+                                echo '<p class="lyrics-pane-padding"></p>';
+
+                                foreach ($poem_text as &$value) {
+                                  if($value === ''){
+                                    $stanza++;
+                                    echo '<p class="space"></p>';
+                                  } else {
+                                    if ($line === 1) {
+                                    echo '<p class="alert-success stanza'. $stanza.' line'.$line.' highlight"><span class="line-number">'.$line.': </span><span class="line-content">'.$value.'</span><span class="check-area" ><span class="glyphicon glyphicon-ok-circle"></span></span></p>';
+                                    } else {
+                                      echo '<p class="stanza'. $stanza.' line'.$line.'"><span class="line-number">'.$line.': </span><span class="line-content">'.$value.'</span><span class="check-area" ></span></p>';
+                                    }
+
+                                    $line++;
+                                 }
+                               }
+
+                               echo '<p class="lyrics-pane-padding"></p>';
+                              ?>
+                            </section>
+                            <div id="mini-map-container">
+                                <div id="mini-map">
+                                </div>
+                            </div>
+                          </div>
+                          
+                                <?php 
+
+                                $line = 1;
+                                $stanza = 1;
+
+                                echo '<p class="lyrics-pane-padding"></p>';
+                                if(isset($poem_translatedText)){
+
+                                  echo '<div class="col-sm-6" ><section id="translatedLyrics-pane" class="lyrics-pane">';
+
+                                  foreach ($poem_translatedText as &$value) {
+                                    if($value === ''){
+                                      $stanza++;
+                                      echo '<p class="space"></p>';
+                                    } else if ($line === 1) {
+                                      echo '<p class="alert-success stanza'. $stanza.' line'.$line.' highlight"><span class="line-number">'.$line.': </span><span class="line-content">'.$value.'</span><span class="check-area" ><span class="glyphicon glyphicon-ok-circle"></span></span></p>';
+                                      } else {
+                                        echo '<p class="stanza'. $stanza.' line'.$line.'"><span class="line-number">'.$line.': </span><span class="line-content">'.$value.'</span><span class="check-area" ></span></p>';
+                                      }
+                                      $line++;
+                                  }
+                                  echo '<p class="lyrics-pane-padding"></p>';
+                                  echo '</section></div>';
+                                }
+                              ?>
+                          <div class="col-sm-6 trigger-parent-pane" >
+                              <section id="trigger-pane" class="lyrics-pane">
+                              </section>
+                          </div>
+                       </div>
+                    </div>
+                </div>
+                 <div id="footer">
+                    <input type="hidden" name="audio-file" id="audio-file" value="<?php echo $audio_file ?>">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-7 col-md-offset-5 audio-controller" style="text-align: center;">
+                                <button type="button" id="btn-play" class="btn btn-lg img-circle">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>      
+            </div>
+              
+        </article>
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://fgnass.github.io/spin.js/spin.min.js"></script>
+        <script src="js/jquery.scroll.min.js"></script>
+        <script src='js/jquery.mini-map.js'></script>
+
+
+        <script type="text/javascript" src="js/poem.js"></script>
+        <script type="text/javascript" src="js/guihelper.js"></script>
+        <script type="text/javascript" src="js/audio.js"></script>
+        <script type="text/javascript" src="js/animationhelper.js"></script>
+        <script type="text/javascript" src="js/animation.js"></script>
+        <script type="text/javascript" src="js/poemsubmit.js"></script>
+    </body>
+</html>

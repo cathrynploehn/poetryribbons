@@ -1,0 +1,27 @@
+/* 
+    Document   : stickyfooter
+    Created on : Mar 18, 2014, 10:32:59 AM
+    Author     : Cat
+    Description:
+        Styles for bootstrap's sticky footer
+*/
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #ffffff;
+  padding-top:10px;
+}
+

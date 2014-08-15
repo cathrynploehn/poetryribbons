@@ -1,0 +1,783 @@
+
+<HTML>
+<HEAD>
+<TITLE>Poetry Ribbons Documentation</TITLE>
+<STYLE><!--
+	HR.minor{height:4px; width:100%; background:#CCCCCC; border: 0px inset #CCCCCC;}
+	HR.major{height:10px; width:100%; background:#CCCCCC; border: 0px inset #CCCCCC;}
+	A:hover{text-decoration: underline}
+	A{text-decoration: none}
+	.codeStyle{font-family:monospace; color: #333333}
+	.subTitle{font-size: 12px; font-weight: bold; color: #002299}
+	.itemTitle{font-size: 14px; font-weight: bold; color: #002299}
+	.groupTitle{font-size: 16px; font-weight: bold; color: #002299}
+	.sectionTitle{font-size: 18px; font-weight: bold; color: #002299}
+	.majorTitle{font-size: 24px; font-weight: bold; color: #002299}
+//--></STYLE>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+</HEAD>
+<BODY bgColor='white' style='padding:10px;'>
+<P class='majorTitle'>Poetry Ribbons Documentation</P>
+
+<HR class='major'>
+<A name='toc'></A><P class='sectionTitle'>Table Of Contents</P>
+<A href='#toc'>Table Of Contents</A><BR>
+<A href='#docinfo'>Documentation Info</A><BR>
+<A href='#overview'>Poetry Ribbons Overview</A><BR>
+<A href='#element0'>Audio class</A><BR>
+ . . . <A href='#element0_l0'>Properties</A><BR>
+ . . .  . . . <A href='#element0_l0_i0'>analyse</A><BR>
+ . . .  . . . <A href='#element0_l0_i1'>context</A><BR>
+ . . .  . . . <A href='#element0_l0_i2'>currentTrigger</A><BR>
+ . . .  . . . <A href='#element0_l0_i3'>currTime</A><BR>
+ . . .  . . . <A href='#element0_l0_i4'>freqs</A><BR>
+ . . .  . . . <A href='#element0_l0_i5'>isPlaying</A><BR>
+ . . .  . . . <A href='#element0_l0_i6'>lagTime</A><BR>
+ . . .  . . . <A href='#element0_l0_i7'>mainBuffer</A><BR>
+ . . .  . . . <A href='#element0_l0_i8'>mainSource</A><BR>
+ . . .  . . . <A href='#element0_l0_i9'>prevTrigger</A><BR>
+ . . .  . . . <A href='#element0_l0_i10'>startOffset</A><BR>
+ . . .  . . . <A href='#element0_l0_i11'>startTime</A><BR>
+ . . .  . . . <A href='#element0_l0_i12'>times</A><BR>
+ . . .  . . . <A href='#element0_l0_i13'>triggers</A><BR>
+ . . . <A href='#element0_l1'>Methods</A><BR>
+ . . .  . . . <A href='#element0_l1_i0'>Audio(url: String, poemTriggers: double, callback: function())</A><BR>
+ . . .  . . . <A href='#element0_l1_i1'>decrementLine()</A><BR>
+ . . .  . . . <A href='#element0_l1_i2'>incrementLine()</A><BR>
+ . . .  . . . <A href='#element0_l1_i3'>initializeAudio (url: String)</A><BR>
+ . . .  . . . <A href='#element0_l1_i4'>pauseSound()</A><BR>
+ . . .  . . . <A href='#element0_l1_i5'>startSound()</A><BR>
+ . . .  . . . <A href='#element0_l1_i6'>updateVisualData()</A><BR>
+ . . . <A href='#element0_l2'>Events</A><BR>
+ . . . <A href='#element0_l3'>Associations</A><BR>
+<A href='#element1'>GuiHelper class</A><BR>
+ . . . <A href='#element1_l0'>Properties</A><BR>
+ . . . <A href='#element1_l1'>Methods</A><BR>
+ . . .  . . . <A href='#element1_l1_i0'>addPauseBtn()</A><BR>
+ . . .  . . . <A href='#element1_l1_i1'>addPlayBtn()</A><BR>
+ . . .  . . . <A href='#element1_l1_i2'>guiNotReady()</A><BR>
+ . . .  . . . <A href='#element1_l1_i3'>guiReady()</A><BR>
+ . . .  . . . <A href='#element1_l1_i4'>loadText(title: String, author: String, originalLyrics: String[], translatedLyrics: String[], callback: JavaScript function)</A><BR>
+ . . .  . . . <A href='#element1_l1_i5'>updateLyrics(currentTrigger: double, prevTrigger: double)</A><BR>
+ . . .  . . . <A href='#element1_l1_i6'>updateTimer(time: double)</A><BR>
+ . . . <A href='#element1_l2'>Events</A><BR>
+ . . . <A href='#element1_l3'>Associations</A><BR>
+<A href='#element2'>Poem class</A><BR>
+ . . . <A href='#element2_l0'>Properties</A><BR>
+ . . .  . . . <A href='#element2_l0_i0'>author</A><BR>
+ . . .  . . . <A href='#element2_l0_i1'>filename</A><BR>
+ . . .  . . . <A href='#element2_l0_i2'>originalLyrics</A><BR>
+ . . .  . . . <A href='#element2_l0_i3'>poemVar</A><BR>
+ . . .  . . . <A href='#element2_l0_i4'>title</A><BR>
+ . . .  . . . <A href='#element2_l0_i5'>translatedLyrics</A><BR>
+ . . .  . . . <A href='#element2_l0_i6'>triggers</A><BR>
+ . . . <A href='#element2_l1'>Methods</A><BR>
+ . . .  . . . <A href='#element2_l1_i0'>getAuthor()</A><BR>
+ . . .  . . . <A href='#element2_l1_i1'>getFilename()</A><BR>
+ . . .  . . . <A href='#element2_l1_i2'>getOriginalLyrics()</A><BR>
+ . . .  . . . <A href='#element2_l1_i3'>getTitle()</A><BR>
+ . . .  . . . <A href='#element2_l1_i4'>getTranslatedLyrics()</A><BR>
+ . . .  . . . <A href='#element2_l1_i5'>getTriggers()</A><BR>
+ . . . <A href='#element2_l2'>Events</A><BR>
+ . . . <A href='#element2_l3'>Associations</A><BR>
+<A href='#element3'>Main (main.js) class</A><BR>
+ . . . <A href='#element3_l0'>Properties</A><BR>
+ . . .  . . . <A href='#element3_l0_i0'>audio: Audio</A><BR>
+ . . .  . . . <A href='#element3_l0_i1'>poem: Poem</A><BR>
+ . . . <A href='#element3_l1'>Methods</A><BR>
+ . . .  . . . <A href='#element3_l1_i0'>btn-back.click()</A><BR>
+ . . .  . . . <A href='#element3_l1_i1'>btn-forward.click()</A><BR>
+ . . .  . . . <A href='#element3_l1_i2'>btn-play.click()</A><BR>
+ . . .  . . . <A href='#element3_l1_i3'>init()</A><BR>
+ . . .  . . . <A href='#element3_l1_i4'>poemSucceed()</A><BR>
+ . . .  . . . <A href='#element3_l1_i5'>ready()</A><BR>
+ . . . <A href='#element3_l2'>Events</A><BR>
+ . . . <A href='#element3_l3'>Associations</A><BR>
+<A href='#element4'>Animation class</A><BR>
+ . . . <A href='#element4_l0'>Properties</A><BR>
+ . . .  . . . <A href='#element4_l0_i0'>draw(audio: Audio, callback: JavaScript function)</A><BR>
+ . . .  . . . <A href='#element4_l0_i1'>model1()</A><BR>
+ . . . <A href='#element4_l1'>Methods</A><BR>
+ . . . <A href='#element4_l2'>Events</A><BR>
+ . . . <A href='#element4_l3'>Associations</A><BR>
+<A href='#element5'>Start (index.php) class</A><BR>
+ . . . <A href='#element5_l0'>Properties</A><BR>
+ . . .  . . . <A href='#element5_l0_i0'>err_msg: String</A><BR>
+ . . .  . . . <A href='#element5_l0_i1'>path: String</A><BR>
+ . . .  . . . <A href='#element5_l0_i2'>poem-name: String</A><BR>
+ . . . <A href='#element5_l1'>Methods</A><BR>
+ . . . <A href='#element5_l2'>Events</A><BR>
+ . . . <A href='#element5_l3'>Associations</A><BR>
+<A href='#element6'>SoundData class</A><BR>
+ . . . <A href='#element6_l0'>Properties</A><BR>
+ . . .  . . . <A href='#element6_l0_i0'>binCount</A><BR>
+ . . .  . . . <A href='#element6_l0_i1'>freqsData</A><BR>
+ . . .  . . . <A href='#element6_l0_i2'>timesData</A><BR>
+ . . . <A href='#element6_l1'>Methods</A><BR>
+ . . .  . . . <A href='#element6_l1_i0'>soundData</A><BR>
+ . . . <A href='#element6_l2'>Events</A><BR>
+ . . . <A href='#element6_l3'>Associations</A><BR>
+
+<HR class='major'>
+
+<P class='sectionTitle'><A name='docinfo'></A>Documentation Info</P>
+<P class='sectionContent'><B>Author:</B> Cathryn Ploehn<BR>
+<B>Last Modified:</B> 2014/4/13<BR>
+<B>Generator:</B> <A href='http://www.gmodeler.com/' target='_blank'>gModeler.com</A>.</P>
+<HR class='minor'>
+
+<P class='sectionTitle'><A name='overview'></A>Poetry Ribbons Overview</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Poetry Ribbons is an app that augments the experience of translated poetry through alternative modalities. </P>
+
+
+<HR class='minor'>
+<P class='sectionTitle'><A name='element0'></a>Audio <i>class</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'>Creates audio context based on a filepath to a .mp3</P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>Path to .mp3 file<BR/>
+	Array of poem triggers<BR/>
+	Callback function to execute after file loads</P>
+	<P class='subTitle'>Returns</P>
+	<P class='sectionContent'>An instance of the Audio class.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Creates a playable audio entity and handlers to start and stop sound. </P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'>audio = new Audio("data/test.mp3", triggers, ready)</P>
+<A name='element0_l0'></A><P class='groupTitle'>Audio Properties</P>
+	<A name='element0_l0_i0'></A><P class='itemTitle'>analyse : <i>Analyser</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Analyser for the created sound node.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element0_l0_i1'></A><P class='itemTitle'>context : <i>contextClass</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Context for the narration file.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element0_l0_i2'></A><P class='itemTitle'>currentTrigger : <i>int</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Current line being read in the narration.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element0_l0_i3'></A><P class='itemTitle'>currTime : <i>double</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Current time in the sound file.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element0_l0_i4'></A><P class='itemTitle'>freqs : <i>Uint8Array</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Stores current frequency data of the sound being played.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element0_l0_i5'></A><P class='itemTitle'>isPlaying : <i>Boolean</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Indicates wheher the sound file is playing or not.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element0_l0_i6'></A><P class='itemTitle'>lagTime : <i>double</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>The distance between the current play time and the current context time.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element0_l0_i7'></A><P class='itemTitle'>mainBuffer : <i>Buffer</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Buffer for the current audio file.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element0_l0_i8'></A><P class='itemTitle'>mainSource : <i>BufferSource</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Source node for the current audio file.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element0_l0_i9'></A><P class='itemTitle'>prevTrigger : <i>int</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Prevous line of the poem being read. </P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element0_l0_i10'></A><P class='itemTitle'>startOffset : <i>double</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Offset from the start of the poem to the current place in the sound file.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element0_l0_i11'></A><P class='itemTitle'>startTime : <i>double</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Start time for the current audio file.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element0_l0_i12'></A><P class='itemTitle'>times : <i>Uint8Array</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Time data for the current place in the sound file.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element0_l0_i13'></A><P class='itemTitle'>triggers : <i>double[]</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Array of triggers for each line and the time they should be displayed.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+<A name='element0_l1'></A><P class='groupTitle'>Audio Methods</P>
+	<A name='element0_l1_i0'></A><P class='itemTitle'>Audio(url: String, poemTriggers: double, callback: function()) : <i>audio</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>url: String<BR/>
+	poemTriggers: double<BR/>
+	callback: function()</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Constructor for the Audio class. Creates audio context for the passed file.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element0_l1_i1'></A><P class='itemTitle'>decrementLine() : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Decreases the current playback time to match the previous trigger.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element0_l1_i2'></A><P class='itemTitle'>incrementLine() : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Increases the current playback time to match the previous trigger.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element0_l1_i3'></A><P class='itemTitle'>initializeAudio (url: String) : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>url: String</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Creates audio object based on the passed url.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element0_l1_i4'></A><P class='itemTitle'>pauseSound() : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Pauses the current sound file.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element0_l1_i5'></A><P class='itemTitle'>startSound() : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Creates a new sound file and plays from the last playback time.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element0_l1_i6'></A><P class='itemTitle'>updateVisualData() : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Returns</P>
+	<P class='sectionContent'>A SoundData object.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Updates the visual data of the current sound file.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+<A name='element0_l2'></A><P class='groupTitle'>Audio Events</P>
+	<P class='sectionContent'>None.</P>
+<A name='element0_l3'></A><P class='groupTitle'>Audio Associations</P>
+	<P class='sectionContent'>
+	<A href='#element3'>Main (main.js)</A> is dependent upon <B>Audio</B><BR>
+	<B>Audio</B> is dependent upon <A href='#element1'>GuiHelper</A><BR>
+	<A href='#element4'>Animation</A> is dependent upon <B>Audio</B><BR>
+	<B>Audio</B> has <A href='#element6'>SoundData</A><BR>
+	<B>Audio</B> is dependent upon <A href='#element4'>Animation</A><BR>
+	</P>
+
+<HR class='minor'>
+<P class='sectionTitle'><A name='element1'></a>GuiHelper <i>class</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'>Various classes invoke GuiHelper functions to update the main interface. </P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>No parameters</P>
+	<P class='subTitle'>Returns</P>
+	<P class='sectionContent'>Nothing. GuiHelper only modifies look and feel elements. Can be used without creating an instance. </P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Helper functions to update GUI based on button events and audio events.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'>GuiHelper.guiNotReady</P>
+<A name='element1_l0'></A><P class='groupTitle'>GuiHelper Properties</P>
+	<P class='sectionContent'>None.</P>
+<A name='element1_l1'></A><P class='groupTitle'>GuiHelper Methods</P>
+	<A name='element1_l1_i0'></A><P class='itemTitle'>addPauseBtn() : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Adds a pause button to the screen.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element1_l1_i1'></A><P class='itemTitle'>addPlayBtn() : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Adds a play button to the screen</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element1_l1_i2'></A><P class='itemTitle'>guiNotReady() : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Sets the GUI to the "loading" mode.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element1_l1_i3'></A><P class='itemTitle'>guiReady() : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Sets the GUI to the "ready" mode.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element1_l1_i4'></A><P class='itemTitle'>loadText(title: String, author: String, originalLyrics: String[], translatedLyrics: String[], callback: JavaScript function) : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>title: String<BR/>
+	author: String<BR/>
+	originalLyrics: String[]<BR/>
+	translatedLyrics: String[]<BR/>
+	callback: JavaScript function </P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Loads the text of the poem onto the screen.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element1_l1_i5'></A><P class='itemTitle'>updateLyrics(currentTrigger: double, prevTrigger: double) : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>currentTrigger: integer<BR/>
+	prevTrigger: integer</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Updates the lyrics on the screen. </P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element1_l1_i6'></A><P class='itemTitle'>updateTimer(time: double) : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>time: double</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Updates the timer on the screen.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+<A name='element1_l2'></A><P class='groupTitle'>GuiHelper Events</P>
+	<P class='sectionContent'>None.</P>
+<A name='element1_l3'></A><P class='groupTitle'>GuiHelper Associations</P>
+	<P class='sectionContent'>
+	<A href='#element3'>Main (main.js)</A> is dependent upon <B>GuiHelper</B><BR>
+	<A href='#element0'>Audio</A> is dependent upon <B>GuiHelper</B><BR>
+	</P>
+
+<HR class='minor'>
+<P class='sectionTitle'><A name='element2'></a>Poem <i>class</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'>Use in conjunction with audio class to create a playable audio element of the poem's narration.</P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>Author: String<BR/>
+	Title: String<BR/>
+	Callback: Javascript function to be called after .json text file is loaded.</P>
+	<P class='subTitle'>Returns</P>
+	<P class='sectionContent'>An instance of the Poem class.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Use to create a Poem object. Loads a JSON file matching the selected poem and creates arrays for the original poem lines, translated poem's lines, and audio timings.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'>var poem = new Poem("Quiereme", "Orviz", poemSucceed);</P>
+<A name='element2_l0'></A><P class='groupTitle'>Poem Properties</P>
+	<A name='element2_l0_i0'></A><P class='itemTitle'>author : <i>String</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Holds author name of the current poem being read.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element2_l0_i1'></A><P class='itemTitle'>filename : <i>String</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Holds filename that contains data of the current poem being read.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element2_l0_i2'></A><P class='itemTitle'>originalLyrics : <i>String[]</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Array of poem verses in their original language.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element2_l0_i3'></A><P class='itemTitle'>poemVar : <i>Poem</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Current poem object (this).</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element2_l0_i4'></A><P class='itemTitle'>title : <i>String</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Title of current poem being read.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element2_l0_i5'></A><P class='itemTitle'>translatedLyrics : <i>String[]</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Array of translated poem verses.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element2_l0_i6'></A><P class='itemTitle'>triggers : <i>double[]</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Array of times that each poem verse is read.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+<A name='element2_l1'></A><P class='groupTitle'>Poem Methods</P>
+	<A name='element2_l1_i0'></A><P class='itemTitle'>getAuthor() : <i>String</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Returns author name.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element2_l1_i1'></A><P class='itemTitle'>getFilename() : <i>String</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Returns poem filename.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element2_l1_i2'></A><P class='itemTitle'>getOriginalLyrics() : <i>String[]</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Returns array of origina lyrics.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element2_l1_i3'></A><P class='itemTitle'>getTitle() : <i>String</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Returns title of current poem.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element2_l1_i4'></A><P class='itemTitle'>getTranslatedLyrics() : <i>String[]</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Returns array of translated lyrics.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element2_l1_i5'></A><P class='itemTitle'>getTriggers() : <i>double[]</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Returns array of triggers signifying when each line is read in the audio.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+<A name='element2_l2'></A><P class='groupTitle'>Poem Events</P>
+	<P class='sectionContent'>None.</P>
+<A name='element2_l3'></A><P class='groupTitle'>Poem Associations</P>
+	<P class='sectionContent'>
+	<A href='#element3'>Main (main.js)</A> is dependent upon <B>Poem</B><BR>
+	</P>
+
+<HR class='minor'>
+<P class='sectionTitle'><A name='element3'></a>Main (main.js) <i>class</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>poem_keiy: A string denoting the key of the poem to be read.</P>
+	<P class='subTitle'>Returns</P>
+	<P class='sectionContent'>Nothing.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Enter a description.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+<A name='element3_l0'></A><P class='groupTitle'>Main (main.js) Properties</P>
+	<A name='element3_l0_i0'></A><P class='itemTitle'>audio: Audio : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Audio object that stores the audio information.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element3_l0_i1'></A><P class='itemTitle'>poem: Poem : <i></i></P>
+	<P class='subTitle'>Availability</P>
+	<P class='sectionContent'>Poem object for the current poem to be read.</P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Enter a description.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+<A name='element3_l1'></A><P class='groupTitle'>Main (main.js) Methods</P>
+	<A name='element3_l1_i0'></A><P class='itemTitle'>btn-back.click() : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Handles user-initiated clicking of the back button.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element3_l1_i1'></A><P class='itemTitle'>btn-forward.click() : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Handles user-initiated clicking of the forward button.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element3_l1_i2'></A><P class='itemTitle'>btn-play.click() : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Handles user-initiated clicking of the play button.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element3_l1_i3'></A><P class='itemTitle'>init() : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Initializes the initialization of the poem readng interface and creates the audio and poem objects. </P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element3_l1_i4'></A><P class='itemTitle'>poemSucceed() : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Function initiated after poem text successfully loaded.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element3_l1_i5'></A><P class='itemTitle'>ready() : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Function called after audio successfully loaded.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+<A name='element3_l2'></A><P class='groupTitle'>Main (main.js) Events</P>
+	<P class='sectionContent'>None.</P>
+<A name='element3_l3'></A><P class='groupTitle'>Main (main.js) Associations</P>
+	<P class='sectionContent'>
+	<B>Main (main.js)</B> is dependent upon <A href='#element1'>GuiHelper</A><BR>
+	<B>Main (main.js)</B> is dependent upon <A href='#element2'>Poem</A><BR>
+	<B>Main (main.js)</B> is dependent upon <A href='#element0'>Audio</A><BR>
+	<B>Main (main.js)</B> is dependent upon <A href='#element4'>Animation</A><BR>
+	<A href='#element5'>Start (index.php)</A> is dependent upon <B>Main (main.js)</B><BR>
+	</P>
+
+<HR class='minor'>
+<P class='sectionTitle'><A name='element4'></a>Animation <i>class</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'>Animation.draw(audio: Audio, callback: JavaScript function)</P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Returns</P>
+	<P class='sectionContent'>An instance of the Animation class.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Contains functions that draw to the screen. Doesn't need to be constructed.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+<A name='element4_l0'></A><P class='groupTitle'>Animation Properties</P>
+	<A name='element4_l0_i0'></A><P class='itemTitle'>draw(audio: Audio, callback: JavaScript function) : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Draws onto the canvas using the audio data.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element4_l0_i1'></A><P class='itemTitle'>model1() : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Draws using the animation model 1. </P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+<A name='element4_l1'></A><P class='groupTitle'>Animation Methods</P>
+	<P class='sectionContent'>None.</P>
+<A name='element4_l2'></A><P class='groupTitle'>Animation Events</P>
+	<P class='sectionContent'>None.</P>
+<A name='element4_l3'></A><P class='groupTitle'>Animation Associations</P>
+	<P class='sectionContent'>
+	<A href='#element3'>Main (main.js)</A> is dependent upon <B>Animation</B><BR>
+	<B>Animation</B> is dependent upon <A href='#element0'>Audio</A><BR>
+	<A href='#element0'>Audio</A> is dependent upon <B>Animation</B><BR>
+	</P>
+
+<HR class='minor'>
+<P class='sectionTitle'><A name='element5'></a>Start (index.php) <i>class</i></P>
+	<P class='subTitle'>Usage</P>
+	To be used as a stand-alone script.<BR/>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Returns</P>
+	<P class='sectionContent'>Initiates the start screen. </P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>PHP controller for the entire web app.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+<A name='element5_l0'></A><P class='groupTitle'>Start (index.php) Properties</P>
+	<A name='element5_l0_i0'></A><P class='itemTitle'>err_msg: String : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>String that represents the current error message.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element5_l0_i1'></A><P class='itemTitle'>path: String : <i></i></P>
+	<P class='subTitle'>Availability</P>
+	<P class='sectionContent'>String path to the current HTML page to be displayed.</P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Enter a description.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element5_l0_i2'></A><P class='itemTitle'>poem-name: String : <i></i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Key of the poem to be read.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+<A name='element5_l1'></A><P class='groupTitle'>Start (index.php) Methods</P>
+	<P class='sectionContent'>None.</P>
+<A name='element5_l2'></A><P class='groupTitle'>Start (index.php) Events</P>
+	<P class='sectionContent'>None.</P>
+<A name='element5_l3'></A><P class='groupTitle'>Start (index.php) Associations</P>
+	<P class='sectionContent'>
+	<B>Start (index.php)</B> is dependent upon <A href='#element3'>Main (main.js)</A><BR>
+	</P>
+
+<HR class='minor'>
+<P class='sectionTitle'><A name='element6'></a>SoundData <i>class</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'>var data = new soundData();</P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Returns</P>
+	<P class='sectionContent'>An instance of the SoundData class.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Used within the audio.js file to pass sound data from the audio class to the animation class.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+<A name='element6_l0'></A><P class='groupTitle'>SoundData Properties</P>
+	<A name='element6_l0_i0'></A><P class='itemTitle'>binCount : <i>int</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Holds the current binCount (number of measurements) for a sound file.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element6_l0_i1'></A><P class='itemTitle'>freqsData : <i>Uint8Array</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Holds an array of frequency data.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+	<A name='element6_l0_i2'></A><P class='itemTitle'>timesData : <i>Uint8Array</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Holds an array of time data.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+<A name='element6_l1'></A><P class='groupTitle'>SoundData Methods</P>
+	<A name='element6_l1_i0'></A><P class='itemTitle'>soundData : <i>SoundData</i></P>
+	<P class='subTitle'>Usage</P>
+	<P class='codeStyle'></P>
+	<P class='subTitle'>Parameters</P>
+	<P class='sectionContent'>None.</P>
+	<P class='subTitle'>Returns</P>
+	<P class='sectionContent'>A SoundData file.</P>
+	<P class='subTitle'>Description</P>
+	<P class='sectionContent'>Creates a sound data file with the current times and frequency data.</P>
+	<P class='subTitle'>Example</P>
+	<P class='codeStyle'></P>
+<A name='element6_l2'></A><P class='groupTitle'>SoundData Events</P>
+	<P class='sectionContent'>None.</P>
+<A name='element6_l3'></A><P class='groupTitle'>SoundData Associations</P>
+	<P class='sectionContent'>
+	<A href='#element0'>Audio</A> has <B>SoundData</B><BR>
+	</P>
+
+<BR>
+<BR>
+<HR class='major'>
+Documentation Generated With <A href='http://www.gModeler.com/' target='_blank'>gModeler.com</A>
+</BODY>
+</HTML>
